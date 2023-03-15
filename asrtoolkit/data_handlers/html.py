@@ -10,21 +10,21 @@ from bs4 import BeautifulSoup
 
 # do not delete - needed in time_aligned_text
 from asrtoolkit.data_handlers.data_handlers_common import separator
-from asrtoolkit.data_structures.segment import segment
+from asrtoolkit.data_structures import Segment
 
 
 def table_header(text, width):
-    " make a table header with input width "
+    "make a table header with input width"
     return '<th align="left" width="{:}%">{:}</th>'.format(width, text)
 
 
 def table_delimiter(text):
-    " make a table delimiter element "
+    "make a table delimiter element"
     return '<td align="left">{:}</td>'.format(text)
 
 
 def header():
-    " Returns html header "
+    "Returns html header"
 
     widths = [10, 8, 82]
 
@@ -41,7 +41,7 @@ def header():
 
 
 def footer():
-    " Returns html footer "
+    "Returns html footer"
     return "</table>\n"
 
 
@@ -66,13 +66,13 @@ def format_segment(seg):
 
 
 def parse_line(line):
-    " parse a single line of an html file"
+    "parse a single line of an html file"
     cols = line.findAll("td")
     seg = None
     if cols:
         start_stop, speaker, text = [[val for val in col.children][0] for col in cols]
         start, stop = start_stop[1:-1].split(" - ")
-        seg = segment({"speaker": speaker, "start": start, "stop": stop, "text": text})
+        seg = Segment({"speaker": speaker, "start": start, "stop": stop, "text": text})
         seg = seg if seg.validate() else None
     return seg
 

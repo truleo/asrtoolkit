@@ -21,14 +21,15 @@ tdur is the duration of the object, in seconds. If there is no duration, use tdu
 stype is the subtype of the object. If there is no subtype, use stype = “<NA>”.
 ortho is the orthographic rendering (spelling) of the object for STT object types. If there is no orthographic representation, use ortho = “<NA>”.
 name is the name of the speaker. name must uniquely specify the speaker within the scope of the file. If name is not applicable or if no claim is being made as to the identity of the speaker, use name = “<NA>”.
-conf is the confidence (probability) that the object information is correct. If conf is not available, use conf = “<NA>”.    
+conf is the confidence (probability) that the object information is correct. If conf is not available, use conf = “<NA>”.
 
 """
 
 # do not delete - needed for time_aligned_text
 from asrtoolkit.data_handlers.data_handlers_common import footer, separator
-from asrtoolkit.data_structures.segment import segment
+from asrtoolkit.data_structures import Segment
 from asrtoolkit.data_structures.formatting import clean_float
+
 
 def header():
     "Header for rttm files is empty"
@@ -44,13 +45,13 @@ def format_segment(seg):
 
 
 def read_file(file_name):
-    """ Reads an RTTM file """
+    """Reads an RTTM file"""
 
     segments = []
     with open(file_name) as data:
         for line in data:
             _, filename, channel, start, duration, _, _, speaker, _, _ = line.split()
-            seg = segment(
+            seg = Segment(
                 **dict(
                     filename=filename,
                     channel=channel,

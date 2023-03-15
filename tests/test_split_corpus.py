@@ -6,16 +6,17 @@ import os
 import shutil
 from os.path import join as pjoin
 
-from asrtoolkit.data_structures.corpus import corpus
-from asrtoolkit.split_corpus import split_corpus
 from utils import get_sample_dir, get_test_dir
+
+from asrtoolkit.data_structures import Corpus
+from asrtoolkit.split_corpus import split_corpus
 
 test_dir = get_test_dir(__file__)
 sample_dir = get_sample_dir(__file__)
 
 
 def setup_test_corpus(orig_dir, trn_dir, dev_dir, n_exemplars):
-    """ Setup fake corpus for testing """
+    """Setup fake corpus for testing"""
     os.makedirs(orig_dir, exist_ok=True)
     os.makedirs(trn_dir, exist_ok=True)
     os.makedirs(dev_dir, exist_ok=True)
@@ -31,14 +32,14 @@ def setup_test_corpus(orig_dir, trn_dir, dev_dir, n_exemplars):
 
 
 def validate_split(directory, inds):
-    """ Validate the files were split as expected """
+    """Validate the files were split as expected"""
     assert set(os.listdir(directory)) == {
         "file-{:02d}.{}".format(i, ext) for ext in ["sph", "stm"] for i in inds
     }
 
 
 def test_split_corpus():
-    """ Test corpus splitter """
+    """Test corpus splitter"""
     n_exemplars = 10
     corpus_dir = f"{test_dir}/split-corpus"
 
@@ -48,7 +49,7 @@ def test_split_corpus():
     dev_dir = pjoin(split_dir, "dev")
 
     setup_test_corpus(orig_dir, trn_dir, dev_dir, n_exemplars)
-    orig_corpus = corpus({"location": orig_dir})
+    orig_corpus = Corpus({"location": orig_dir})
     split_corpus(
         orig_dir,
         split_dir=split_dir,
@@ -60,7 +61,7 @@ def test_split_corpus():
     )
 
     # Make sure we didn't destroy input data
-    final_corpus = corpus({"location": orig_dir})
+    final_corpus = Corpus({"location": orig_dir})
     assert orig_corpus.validate() == 1
     assert final_corpus.validate() == 1
     orig_hashes = [_.hash() for _ in orig_corpus.exemplars]
@@ -68,7 +69,7 @@ def test_split_corpus():
     assert all(h in final_hashes for h in orig_hashes)
 
     # Make sure correct number of words present in data split
-    dev_corpus = corpus({"location": dev_dir})
+    dev_corpus = Corpus({"location": dev_dir})
     assert sum(e.count_words() for e in dev_corpus.exemplars) == 20
     assert dev_corpus.validate()
 

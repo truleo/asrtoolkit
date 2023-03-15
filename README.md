@@ -1,4 +1,4 @@
-# Automatic Speech Recognition (ASR) Toolkit [![Build Status](https://travis-ci.org/finos/greenkey-asrtoolkit.svg?branch=master)](https://travis-ci.org/finos/greenkey-asrtoolkit)[![FINOS - Active](https://cdn.jsdelivr.net/gh/finos/contrib-toolbox@master/images/badge-active.svg)](https://finosfoundation.atlassian.net/wiki/display/FINOS/Active)
+# Automatic Speech Recognition (ASR) Toolkit
 
 ---
 
@@ -134,7 +134,7 @@ This script reduces audio quality of input audio files so that acoustic models c
 
 ### Code of Conduct
 
-Please make sure you read and observe our [Code of Conduct](https://raw.githubusercontent.com/finos/greenkey-asrtoolkit/master/CODE_OF_CONDUCT.md).
+Please make sure you read and observe our [Code of Conduct](https://raw.githubusercontent.com/truleo/asrtoolkit/master/CODE_OF_CONDUCT.md).
 
 ### Pull Request process
 
@@ -150,14 +150,12 @@ Please note that some CCLAs require individuals/employees to be explicitly named
 
 *Need an ICLA? Unsure if you are covered under an existing CCLA? Email [help@finos.org](mailto:help@finos.org)*
 
-## Authors
+## Maintainers
 
 - [Matthew Goldey](https://github.com/mgoldey)
 - [Tejas Shastry](https://github.com/tshastry)
-- [Amy Geojo](https://github.com/ageojo)
-- [Svyat Vergun](https://github.com/sv-github)
-- [Ashley Shultz](https://github.com/AGiantSquid)
-- [Colin Brochtrup](https://github.com/cbrochtrup)
+
+For all other authors, please see the [list of contributors].
 
 ## License
 
@@ -167,8 +165,6 @@ Copyright 2020 GreenKey Technologies
 
 <!-- Markdown link & img defs -->
 [FINOS]: https://www.finos.org
-[Code of Conduct]: https://www.finos.org/code-of-conduct
-[Voice Program]: https://finosfoundation.atlassian.net/wiki/spaces/VOICE/overview
 [SemVer]: http://semver.org
-[list of contributors]: https://github.com/finos/greenkey-asrtoolkit/graphs/contributors
-[tags on this repository]: https://github.com/finos/greenkey-asrtoolkit/tags
+[list of contributors]: https://github.com/truleo/asrtoolkit/graphs/contributors
+[tags on this repository]: https://github.com/truleo/asrtoolkit/tags

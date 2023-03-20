@@ -69,7 +69,7 @@ def parse_segment(input_seg):
 
         Assigns value to extracted_dict object if present in input_seg
 
-        :param value:         key from the inside of gk Segment
+        :param value:         key from the inside of truleo Segment
         :param dict_key:      key to which value should be assigned
         :param interior_key:  sometimes values are nested under this
         :param proc_val:      function formatting the value
